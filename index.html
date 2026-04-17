@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio | LariDev</title>
+    <link rel="stylesheet" href="./estilo/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="menu">
+                <a onclick="mostrarPagina('inicio')">Início</a>
+                <a onclick="mostrarPagina('projetos')">Projetos</a>
+                <a onclick="mostrarPagina('certificado')" class="btn-certificado">Certificados</a>
+                <a onclick="mostrarPagina('sobre')">Sobre mim</a>
+                <a onclick="mostrarPagina('contato')">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- INICIO -->
+    <section id="inicio" class="pagina ativa hero">
+        <div class="container">
+            <div class="conteudo">
+                <h1>Barbara Larissa</h1>
+                <h2>Desenvolvedora Front-end</h2>
+
+                <p>
+                    Transformo ideias em sites modernos, bonitos e funcionais. Especialista em interfaces responsivas e
+                    integrações.
+                </p>
+
+                <div class="botoes">
+                    <a href="https://wa.me/5543996818242?text=Olá%20Barbara,%20vi%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto!"
+                        target="_blank" class="btn btn-principal">
+                        Vamos nos conectar?
+                    </a>
+
+                    <a href="https://github.com/barbara-larissa" target="_blank" class="btn btn-outline">
+                        Meu GitHub
+                    </a>
+
+                    <button class="btn btn-outline" onclick="mostrarPagina('curriculo')">
+                        Ver Currículo
+                    </button>
+                </div>
+
+                <div class="mini-stack">
+                    <div class="item-stack-mini">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
+                    </div>
+                    <div class="item-stack-mini">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
+                    </div>
+                    <div class="item-stack-mini">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+                    </div>
+                    <div class="item-stack-mini">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
+                    </div>
+                    <div class="item-stack-mini">
+                        <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg">
+                    </div>
+                    <div class="item-stack-mini">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg">
+                    </div>
+                    <div class="item-stack-mini">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg">
+                    </div>
+                    <div class="item-stack-mini">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg">
+                    </div>
+                    <div class="item-stack-mini">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg">
+                    </div>
+                </div>
+            </div>
+
+            <div class="perfil">
+                <div class="balao-fala">Olá! Seja bem-vinda!</div>
+                <img src="chibi.png" class="avatar-pro">
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projetos" class="pagina">
+        <div class="container">
+            <div class="conteudo">
+                <h1>Meus Projetos</h1><br>
+                <p>Alguns projetos que desenvolvi.</p><br>
+
+                <div class="grid-projetos">
+
+                    <!-- PROJETO 1 -->
+                    <div class="card-projeto">
+                        <video width="100%" autoplay muted loop playsinline class="video-card">
+                            <source
+                                src="./videos/Burguer do Bom _ O Sabor que vai até você - Google Chrome 2026-03-12 14-05-04.mp4"
+                                type="video/mp4">
+                        </video>
+
+                        <h3>Burguer do Bom</h3>
+                        <p>Sistema web com <b>HTML, CSS e JavaScript</b>.</p>
+
+                        <div class="links">
+                            <span class="btn btn-disabled">Em breve</span>
+                            <a href="" class="btn btn-outline" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+
+                    <!-- PROJETO 2 -->
+                    <div class="card-projeto">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/hMQYXhc1-2A"
+                                title="Sistema de Controle Financeiro" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <h3>Sistema de controle financeiro</h3>
+
+                        <div class="links">
+                            <a href="#" class="btn btn-principal">Ver Projeto</a>
+                            <a href="https://github.com" class="btn btn-outline" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+
+                    <!-- PROJETO 3 -->
+                    <div class="card-projeto">
+                        <h3>Projeto 3</h3>
+                        <p>Aplicação com integração Firebase.</p>
+
+                        <div class="links">
+                            <a href="#" class="btn">Ver Projeto</a>
+                            <a href="#" class="btn btn-outline" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="pagina">
+        <div class="container">
+            <div class="conteudo">
+                <h1>Sobre Mim</h1>
+                <p><strong>Olá! Sou Barbara Larissa</strong>, desenvolvedora Front-End focada em criar interfaces
+                    modernas, funcionais e totalmente responsivas.</p>
+                <p>Especialista em transformar ideias em realidade usando <strong>HTML5, CSS3 e JavaScript</strong>.</p>
+                <p>Atualmente focada em UX/UI e performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="pagina">
+        <div class="container">
+            <div class="conteudo">
+                <h1>Contato</h1><br>
+                <p>Entre em contato comigo.</p><br>
+                <p><b>Email: laribdev@gmail.com</b></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CURRÍCULO -->
+   <section id="curriculo" class="pagina">
+    <div class="container">
+        <div class="conteudo">
+            <h1>Meu Currículo</h1>
+
+            <button class="btn-voltar" onclick="mostrarPagina('inicio')">
+                ← Voltar para o Portfólio
+            </button>
+
+        <iframe src="./curriculo_Barbara.pdf" ></iframe>
+    </div>
+</section>
+    <!-- CERTIFICADOS -->
+    <div id="certificado" class="pagina-certificado">
+        <div class="container">
+            <h1>Meus Certificados</h1>
+            <iframe src="./certificado/certificado.pdf" width="100%" height="600px"></iframe>
+            <br>
+            <button onclick="mostrarPagina('inicio')" class="btn">Voltar</button>
+        </div>
+    </div>
+
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
