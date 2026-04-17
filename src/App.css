@@ -1,0 +1,841 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&family=Poppins:wght@400;500;700&display=swap');
+
+
+/* 1. Reset e Fundo da Tela */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, rgb(20, 0, 35) 0%, rgb(0, 0, 0) 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+}
+
+/* 2. Estilo do Meteoro (A cabeça do meteoro) */
+.meteor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background-color: #ffffff;
+  border-radius: 9999px;
+  /* Brilho da ponta */
+  box-shadow: 0 0 10px 2px rgba(168, 85, 247, 0.5);
+  transform: rotate(215deg);
+  pointer-events: none;
+  animation: meteor-animation linear infinite;
+}
+
+/* 3. O Rastro (A cauda degradê) */
+.meteor::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* Comprimento do rastro */
+  width: 80px; 
+  height: 1px;
+  /* Degradê que faz a cauda sumir suavemente */
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.8), transparent);
+}
+
+/* 4. Animação de Movimento */
+@keyframes meteor-animation {
+  0% {
+    transform: rotate(215deg) translateX(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1; /* Aparece suavemente */
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    /* Distância longa para garantir que cubra até o final do monitor */
+    transform: rotate(215deg) translateX(-2200px); 
+    opacity: 0;
+  }
+}
+/* 5. Conteúdo Central (Texto) */
+.main-content {
+  /* Tiramos o vh e usamos padding para controlar a distância */
+  padding-top: 100px; 
+  padding-bottom: 50px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.title {
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 0;
+  /* Efeito de brilho no nome */
+  text-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #a1a1aa;
+  margin-top: 0.5rem;
+}
+
+
+.btn-primary {
+  margin-top: 2.5rem;
+  padding: 12px 28px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.btn-primary:hover {
+  background: white;
+  color: black;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+/* Container dos botões principais */
+.button-group {
+  display: flex;            /* Flexbox: Alinha os itens em linha */
+  gap: 15px;               /* Espaçamento uniforme entre os botões */
+  justify-content: center;  /* Centraliza o grupo horizontalmente */
+  align-items: center;      /* Alinha verticalmente no centro */
+  margin-top: 25px;         /* Margem superior para respiro */
+  flex-wrap: wrap;          /* Responsividade: Quebra linha em telas pequenas */
+}
+
+/* Ajuste para que o botão primário não tenha margem própria que atrapalhe */
+.btn-primary {
+  margin-top: 0 !important; 
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary, .btn-social {
+  height: 50px;           
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 25px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animação com "elástico" */
+}
+
+/* Efeito ao passar o mouse */
+.btn-primary:hover, .btn-social:hover {
+  transform: scale(1.1);   /* Aumenta 10% (Animação de pulsada) */
+  background: #a855f7;     /* Muda para o roxo da sua marca */
+  border-color: #a855f7;
+  color: #fff;
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.6); /* Brilho neon intenso */
+}
+
+/* Garante que os ícones não fiquem colados no texto */
+.icon-logo, .icon-logo-github {
+  width: 22px;
+  height: 22px;
+  margin-right: 12px; /* Afasta o ícone da palavra */
+}
+
+
+.main-container-hero {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+  /* Aumentamos o gap para empurrar tudo o que estiver abaixo do título/botão */
+  gap: 40px;             
+  margin-top: 30px;
+}
+
+.social-icons-row {
+  display: flex;          
+  gap: 35px;             /* Espaço entre o GitHub e o LinkedIn */
+  justify-content: center;
+  /* Se quiser descer AINDA MAIS só os ícones, aumentamos aqui: */
+  margin-top: 20px;      
+}
+
+/* Mantendo seus ícones com a animação de escala */
+.icon-only-github, .icon-only-linkedin {
+  width: 38px;
+  height: 38px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.icon-only-github {
+  filter: invert(1);
+}
+
+.icon-link-minimal:hover {
+  transform: scale(1.3) translateY(-5px);
+}
+.icon-link-minimal:hover .icon-only-github,
+.icon-link-minimal:hover .icon-only-linkedin {
+  filter: drop-shadow(0 0 10px #a855f7);
+}
+
+/* Mantém o GitHub branco no hover */
+.icon-link-minimal:hover .icon-only-github {
+  filter: invert(1) drop-shadow(0 0 10px #a855f7);
+}
+
+/* 6. Ajuste das Estrelas (Canvas) */
+#tsparticles canvas {
+  /* Deixa as estrelas mais suaves no fundo */
+  opacity: 0.8;
+}
+
+/* --- TÍTULO  --- */
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.8rem, 8vw, 4rem); 
+  font-weight: 200;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: clamp(4px, 2vw, 12px); /* Até o espaçamento fica responsivo! */
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+/* --- SUBTÍTULO (EQUILIBRADO) --- */
+.subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem; /* Ajustei o tamanho para não brigar com o nome */
+  font-weight: 400;
+  color: #a855f7; /* Mantive o roxo que você gostou */
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+h1 {
+
+  font-size: clamp(1.8rem, 5vw + 1rem, 3.5rem);
+  width: 90%; 
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.button-group {
+  display: flex;      
+  flex-direction: row; 
+  gap: 20px;          
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;   
+}
+
+/* Estilo do botão de WhatsApp para casar com o primário */
+.btn-whatsapp-hero {
+  height: 50px;
+  padding: 0 30px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-whatsapp-hero:hover {
+  transform: scale(1.05);
+  background-color: #20ba5a;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+}
+
+/* --- REFORÇO DO ALINHAMENTO DOS BOTÕES DOS CARDS --- */
+.project-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  align-items: stretch;
+}
+
+.btn-secondary, .btn-soon, .btn-venda {
+  flex: 1;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* --- SEÇÃO DE DIFERENCIAIS --- */
+.diferenciais-section {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 100px;
+  padding: 60px 20px;
+  z-index: 10;
+}
+
+.diferenciais-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.diferencial-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: left;
+  transition: all 0.4s ease;
+}
+
+.diferencial-card:hover {
+  transform: translateY(-10px);
+  background: rgba(168, 85, 247, 0.05); 
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.icon-box {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.diferencial-card h3 {
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.diferencial-card p {
+  font-family: 'Poppins', sans-serif;
+  color: #94a3b8; 
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* --- AJUSTE NO CONTAINER PARA PERMITIR ROLAGEM --- */
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  /* MUDE DE center PARA flex-start */
+  justify-content: flex-start; 
+  
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* --- SEÇÃO SOBRE MIM --- */
+.about-section {
+  width: 100%;
+  max-width: 1100px;
+  padding: 80px 20px;
+  margin-top: 50px;
+  z-index: 10;
+  position: relative;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  flex-wrap: wrap; 
+}
+
+.about-text {
+  flex: 1;
+  min-width: 320px;
+  text-align: left;
+}
+
+.about-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  letter-spacing: 5px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  border-left: 4px solid #a855f7; 
+  padding-left: 20px;
+}
+
+.about-text p {
+  font-family: 'Poppins', sans-serif;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+/* --- FRAME DA IMAGEM --- */
+.about-image-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  position: relative;
+}
+
+.image-frame {
+  width: 320px;
+  height: 420px;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 24px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden; 
+  z-index: 2;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.about-profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center;
+}
+
+/* Brilho Roxo atrás da foto */
+.image-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 110%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+  filter: blur(20px);
+  z-index: 1;
+}
+
+/* --- SEÇÃO STACKS --- */
+.stacks-section {
+  width: 100%;
+  max-width: 1000px;
+  padding: 60px 20px;
+  text-align: center;
+  z-index: 10;
+}
+
+.stacks-grid {
+  display: flex;
+  justify-content: center;
+  gap: 12px; 
+  flex-wrap: wrap;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.stack-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  padding: 20px 15px; 
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  min-width: 100px; 
+  flex: 1; 
+  max-width: 150px; 
+}
+.stack-card:hover {
+  transform: translateY(-5px);
+  background: rgba(168, 85, 247, 0.1);
+  border-color: #a855f7;
+  box-shadow: 0 10px 20px rgba(168, 85, 247, 0.1);
+}
+
+.stack-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #a855f7;
+}
+
+.stack-card p {
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Corrigindo o título da seção de Stacks */
+.stacks-section .section-title {
+  color: #ffffff; 
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  letter-spacing: 5px; 
+  text-transform: uppercase;
+  font-size: 2rem; 
+  margin-bottom: 40px;
+  display: block; 
+}
+
+.stack-card:has(p:contains("Tailwind")):hover {
+  border-color: #38bdf8;
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+}
+
+
+/* PROJETOS */ 
+.projetos-container { /* Nome fictício do seu container pai */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.section-title {
+  text-align: center;
+  width: 100%;
+  margin: 2rem 0; /* Dá um espaço em cima e embaixo */
+  
+  color: #ffffff; /* Deixa o texto branco */
+  
+  /* Dica: se quiser que ele brilhe um pouco como os outros itens: */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2); 
+  font-size: 2.5rem;
+}
+.projects-section {
+  padding: 100px 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.project-card {
+  position: relative; 
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  transition: transform 0.3s ease;
+}
+
+/* Estilo da Etiqueta de Venda */
+.badge-comercial {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Alinhamento dos botões no rodapé do card */
+.project-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Estilo do Botão de Venda */
+.btn-venda {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #a855f7;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.btn-venda:hover {
+  background: #9333ea;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
+}
+.project-card:hover {
+  transform: translateY(-10px);
+  border-color: #a855f7;
+  background: rgba(168, 85, 247, 0.05);
+}
+
+
+
+.project-image-placeholder {
+  width: 100%;
+  height: 200px;
+  background: rgba(168, 85, 247, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a855f7;
+  font-weight: bold;
+}
+
+.project-content {
+  padding: 25px;
+}
+.project-content h3 {
+  color: #ffffff; 
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.project-content p {
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(168, 85, 247, 0.2); 
+  border-radius: 20px;
+  overflow: hidden;
+}
+.project-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.project-links .btn-secondary {
+  flex: 1;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 8px;
+  text-decoration: none;
+}
+
+
+/* Isso garante que o vídeo respeite o tamanho do card */
+.project-video-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; 
+  height: 0;
+  overflow: hidden;
+  background: #000; 
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;  
+  height: 100% !important; 
+  border: 0;
+}
+.tags span {
+  background: rgba(168, 85, 247, 0.2); 
+  color: #a855f7; 
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  margin-right: 8px;
+  display: inline-block;
+}
+.project-content p {
+  color: #ffffff; 
+}
+/* Estilo base do botão */
+.btn-secondary {
+  flex: 1; 
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #a855f7;
+  border: 2px solid #a855f7;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-sizing: border-box; 
+}
+/* Efeito ao passar o mouse (Hover) */
+.btn-secondary:hover {
+  background-color: #a855f7;
+  color: #ffffff; 
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.6); 
+  transform: translateY(-3px); 
+}
+
+/* 1. Alinhamento dos Botões (GITHUB e EM BREVE) */
+.project-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  align-items: stretch; 
+  width: 100%;
+}
+
+.btn-secondary, .btn-soon, .btn-venda {
+  flex: 1; 
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* 2. Estilo da Etiqueta (Lançamento em Breve) */
+.badge-soon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  z-index: 20; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  pointer-events: none; 
+}
+
+/* 3. Estilo da Etiqueta Verde (Disponível) do outro card */
+.badge-comercial {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  z-index: 20;
+}
+
+/* Garante que o container do vídeo aceite o posicionamento da etiqueta */
+.project-card {
+  position: relative;
+}
+/* O botão de "Em Breve" para casar com o de cima */
+.btn-soon {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background: rgba(168, 85, 247, 0.05);
+  color: rgba(255, 255, 255, 0.4);
+  border: 2px dashed rgba(168, 85, 247, 0.4); 
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: not-allowed;
+  box-sizing: border-box;
+}
+.btn-soon:hover {
+  background: rgba(168, 85, 247, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.project-video-element {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+
+/* RESPONSIVIDADE (PARA CELULAR) */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column-reverse; 
+    gap: 40px;
+    text-align: center;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-title {
+    border-left: none;
+    border-bottom: 4px solid #a855f7;
+    padding-left: 0;
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+
+  .image-frame {
+    width: 280px;
+    height: 360px;
+  }
+}
