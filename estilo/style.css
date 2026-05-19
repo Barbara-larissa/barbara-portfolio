@@ -1,0 +1,884 @@
+/* ==========================================
+   VARIÁVEIS DE CORES
+========================================== */
+
+:root {
+    --cor-primaria: #1c1c3c;
+    --cor-secundaria: #38bdf8;
+    --cor-texto-escuro: #2d2d5a;
+
+    --gradiente-fundo: linear-gradient(135deg,
+            #BA5EC2,
+            #F662A8,
+            #FF7A87,
+            #FFA16B,
+            #FFCD5E,
+            #F9F871);
+}
+
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+/* ==========================================
+   BODY
+========================================== */
+body {
+    background: var(--gradiente-fundo);
+    background-attachment: fixed;
+    min-height: 100vh; /* Permite que a página cresça */
+    width: 100vw;
+    overflow: auto; /* Permite rolar normalmente */
+}
+
+
+
+/* ==========================================
+   HEADER / MENU
+========================================== */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+
+    display: flex;           /* Ativa flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+}
+
+/* Opcional: aumenta o padding do menu pra mais “respiro” */
+.menu {
+    display: flex;
+    gap: 30px;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 15px 35px; /* maior que antes */
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+}
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.menu a:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+/* ==========================================
+   HERO
+========================================== */
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+
+
+}
+
+/* CONTAINER PRINCIPAL */
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 40px 60px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    gap: 60px;
+    margin: auto;
+}
+
+/* ==========================================
+   TEXTO (ESQUERDA)
+========================================== */
+
+.conteudo {
+    flex: 1.2;
+    text-align: left;
+}
+
+.conteudo h1 {
+    font-size: 64px;
+    color: var(--cor-primaria);
+    margin-bottom: 5px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.conteudo p {
+    color: var(--cor-texto-escuro);
+    line-height: 1.5;
+    font-size: 17px;
+    max-width: 420px;
+}
+
+
+
+
+
+
+/* ==========================================
+   AVATAR (DIREITA)
+========================================== */
+
+.perfil {
+    position: relative;
+    /* Base para o balão flutuar */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.balao-fala {
+    position: absolute;
+    /* Tente aumentar esse valor negativo até o balão sair de cima do rosto */
+    top: -60px;
+
+    /* Centraliza o balão horizontalmente em relação à foto */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+
+    background: white;
+    color: #1e1e2f;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    /* Garante que fique na frente de tudo */
+
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s ease;
+}
+
+/* Ajuste o biquinho para ele apontar para baixo corretamente */
+.balao-fala::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+/* Quando passar o mouse, ele sobe para a posição final */
+.perfil:hover .balao-fala {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Mantendo sua animação da foto */
+.avatar-pro {
+    width: 420px;
+    transition: 0.4s;
+    z-index: 5;
+}
+
+.avatar-pro:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+
+
+
+/* ==========================================
+   BOTÕES
+========================================== */
+
+.botoes {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 14px;
+    display: inline-block;
+}
+
+/* BOTÃO PRINCIPAL */
+
+.btn-principal {
+    background: #4f46e5;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    animation: pulsar 2s infinite;
+    /* Roda a cada 2 segundos para sempre */
+    transition: 0.3s;
+}
+
+.btn-principal:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    animation: none;
+    transform: scale(1.05);
+}
+
+
+@keyframes pulsar {
+    0% {
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(79, 70, 229, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* BOTÃO OUTLINE */
+
+.btn-outline {
+    border: 2px solid var(--cor-primaria);
+    color: var(--cor-primaria);
+}
+
+.btn-outline:hover {
+    background: var(--cor-primaria);
+    color: white;
+}
+
+/* ==========================================
+   SEÇÃO PROJETOS
+========================================== */
+
+.projetos {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.titulo-projetos {
+    font-size: 42px;
+    margin-bottom: 50px;
+    color: #1c1c3c;
+}
+
+/* GRID */
+
+.grid-projetos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* CARD */
+
+.card-projeto {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.card-projeto:hover {
+    transform: translateY(-6px);
+}
+
+/* IMAGEM */
+
+.card-projeto img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+/* TEXTO */
+
+.card-projeto h3 {
+    margin-bottom: 10px;
+}
+
+.card-projeto p {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* LINKS */
+
+.links {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+/* ==========================================
+   CONFIGURAÇÃO GLOBAL DAS PÁGINAS
+========================================== */
+.pagina {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Ocupa a tela toda */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    
+    /* Importante: permite rolar o que estiver dentro da página */
+    overflow-y: auto; 
+    overflow-x: hidden;
+}
+
+.pagina.ativa {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* ==========================================
+   AJUSTE ESPECÍFICO PARA PROJETOS (DESTRAVA ROLAGEM)
+========================================== */
+#projetos.pagina {
+    position: relative; /* permite scroll normal */
+    height: auto;       /* deixa a altura crescer com o conteúdo */
+    padding: 180px 20px 80px; /* espaço para o header não cobrir */
+    overflow-y: auto; 
+}
+/* Mantém a Home e Sobre centralizadas e fixas */
+#home.pagina, #sobre.pagina, #curriculo.pagina {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Home não rola */
+}
+
+/* Estilo da barra de rolagem (opcional para ficar bonito) */
+.pagina::-webkit-scrollbar {
+    width: 8px;
+}
+.pagina::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*========================
+CURRICULO
+===================*/
+
+#curriculo .conteudo {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+#curriculo iframe {
+    max-width: 100%;
+    height: 70vh;
+    border-radius: 20px;
+}
+
+/*=======================
+VIDEOS
+=======================*/
+
+/* Container que segura o vídeo */
+.media-container {
+    width: 100%;
+    border-radius: 12px;
+    /* Ajuste para combinar com o arredondado dos seus cards */
+    overflow: hidden;
+    /* Corta as bordas do vídeo para seguir o arredondado */
+    margin-bottom: 15px;
+    /* Espaço entre o vídeo e o título "Projeto 1" */
+    line-height: 0;
+    /* Remove espaços fantasmas abaixo do vídeo */
+}
+
+.video-projeto {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    /* Garante que o vídeo preencha o espaço sem deformar */
+}
+
+.btn-text.disabled {
+    cursor: not-allowed;
+    /* Mostra o ícone de 'proibido' ao passar o mouse */
+    opacity: 0.5;
+    /* Deixa o botão mais apagadinho */
+    text-decoration: none;
+}
+
+
+
+
+/*========================
+SOBRE MIM
+=========================*/
+
+#sobre .conteudo {
+    /* Mantenha o seu fundo que ficou ótimo */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 50px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+#sobre h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #1e1e2f;
+    /* Um tom bem escuro, quase preto */
+    margin-bottom: 30px;
+    letter-spacing: -1.5px;
+    text-shadow: none;
+    /* Limpo fica mais moderno */
+}
+
+#sobre p {
+    font-size: 1.15rem;
+    font-weight: 600;
+    /* Negrito na medida certa */
+    color: #111111;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-shadow: none;
+    /* Remove o aspecto 'embaçado' */
+}
+
+/*========================
+CONTATO
+=========================*/
+
+/* 1. Removemos o fundo da seção externa */
+#contato.pagina {
+    background: none;
+    /* Tira a cor/textura da caixa de fora */
+    border: none;
+    /* Tira a borda da caixa de fora */
+    box-shadow: none;
+    /* Tira a sombra da caixa de fora */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. Deixamos a textura APENAS no card de dentro */
+#contato .container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 60px;
+    width: 85%;
+    max-width: 900px;
+    text-align: center;
+    /* Centraliza o texto */
+}
+
+/* 3. Garantimos que o texto dentro dele também centralize */
+#contato .conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+/* ==================================
+Container da stack abaixo dos botões 
+====================================*/
+/* ==========================================
+   STACK COM EFEITO DE VIDRO REFINADO
+========================================== */
+
+.mini-stack {
+    display: flex;
+    flex-direction: row;
+    /* 1. Diminuir o espaço entre os ícones para 10px ajuda a caber todos */
+    gap: 10px;
+    margin-top: 60px;
+    justify-content: flex-start;
+    /* 2. O 'nowrap' impede que o Firebase pule para a linha de baixo */
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.item-stack-mini {
+    /* 3. Reduzir a largura e altura de 75px para 65px libera espaço na linha */
+    width: 65px;
+    height: 65px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+}
+
+.item-stack-mini img {
+    /* 4. Ajustar o tamanho da imagem interna para acompanhar o card menor */
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+/* --- Efeito Hover --- */
+.item-stack-mini:hover {
+    transform: scale(1.1) translateY(-10px);
+    background: rgba(255, 255, 255, 0.35);
+    /* Fica mais clarinho ao passar o mouse */
+    border-color: #ffffff;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+
+/* INÍCIO */
+#inicio {
+    min-height: 100vh; /* ocupa pelo menos a tela toda */
+}
+
+/* PROJETOS */
+#projetos {
+    min-height: 100vh;
+    padding-top: 120px; /* dá espaço pro header não cobrir */
+}
+
+/* SOBRE */
+#sobre {
+    min-height: 100vh;
+    padding-top: 120px;
+}
+
+/* CONTATO */
+#contato {
+    min-height: 100vh;
+    padding-top: 120px;
+}
+
+
+
+
+
+
+
+
+/* ==========================================
+   RESPONSIVO FINAL LIMPO
+========================================== */
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 40px;
+        gap: 40px;
+    }
+
+    .conteudo h1 {
+        font-size: 48px;
+    }
+
+    .avatar-pro {
+        width: 320px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    html, body {
+        overflow: hidden; /* sem scroll global */
+    }
+
+    /* HEADER FIXO */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999999;
+        padding: 8px 0;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* MENU */
+    .menu {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        padding: 5px 8px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        background: transparent;
+    }
+
+    .menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .menu a {
+        font-size: 11px;
+        white-space: nowrap;
+        padding: 5px 8px;
+        flex-shrink: 0;
+    }
+
+    /* PÁGINAS (SEM SCROLL) */
+    .pagina {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* HERO */
+    .hero {
+        height: 100vh;
+        padding-top: 80px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* CONTAINER */
+    .container {
+        flex-direction: column-reverse;
+        width: 92%;
+        padding: 20px;
+        gap: 18px;
+        border-radius: 25px;
+        max-height: 100vh;
+        overflow: hidden;
+    }
+
+    /* TEXTO */
+    .conteudo {
+        text-align: center;
+    }
+
+    .conteudo h1 {
+        font-size: 30px;
+        line-height: 1.1;
+    }
+
+    .conteudo h2 {
+        font-size: 18px;
+    }
+
+    .conteudo p {
+        font-size: 14px;
+        max-width: 100%;
+    }
+
+    /* FOTO */
+    .avatar-pro {
+        width: 180px;
+    }
+
+    .perfil {
+        justify-content: center;
+    }
+
+    /* BALÃO */
+    .balao-fala {
+        font-size: 12px;
+        padding: 6px 10px;
+        top: -40px;
+    }
+
+    /* BOTÕES */
+    .botoes {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 260px;
+        text-align: center;
+    }
+
+    /* STACK */
+    .mini-stack {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    .item-stack-mini {
+        width: 55px;
+        height: 55px;
+    }
+
+    .item-stack-mini img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* PROJETOS */
+    .grid-projetos {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .card-projeto {
+        padding: 18px;
+    }
+
+    /* SOBRE */
+    #sobre .conteudo {
+        padding: 25px;
+        text-align: center;
+    }
+
+    #sobre h1 {
+        font-size: 2rem;
+    }
+
+    #sobre p {
+        font-size: 1rem;
+    }
+
+    /* CONTATO */
+    #contato .container {
+        width: 92%;
+        padding: 25px;
+    }
+
+    /* CURRÍCULO */
+    #curriculo iframe {
+        display: none;
+    }
+
+    /* CERTIFICADO */
+    #certificado img {
+        width: 100%;
+        border-radius: 12px;
+    }
+}
+
+/* =========================
+   TELAS MUITO PEQUENAS
+========================= */
+
+@media (max-width: 480px) {
+
+    .conteudo h1 {
+        font-size: 24px;
+    }
+
+    .conteudo h2 {
+        font-size: 16px;
+    }
+
+    .conteudo p {
+        font-size: 13px;
+    }
+
+    .avatar-pro {
+        width: 150px;
+    }
+
+    .menu a {
+        font-size: 10px;
+        padding: 4px 6px;
+    }
+
+    .btn {
+        font-size: 13px;
+    }
+}

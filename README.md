@@ -2,7 +2,7 @@
 ### Portfólio Criativo e Profissional — Desenvolvedora Front-end
 
 <div align="center">
- <img src="img/meu-portfolio.png" alt="Bárbara Larissa - Creative Portfolio" width="100%" style="max-width: 800px; border-radius: 8px; border: 2px solid #0ea5e9; box-shadow: 0 4px 20px rgba(14, 165, 233, 0.15);" />lio" width="100%" style="max-width: 800px; border-radius: 8px; border: 2px solid #0ea5e9; box-shadow: 0 4px 20px rgba(14, 165, 233, 0.15);" />
+  <img src="img/portfolio.png" alt="Bárbara Larissa - Creative Portfolio" width="100%" style="max-width: 800px; border-radius: 8px; border: 2px solid #38bdf8; box-shadow: 0 4px 20px rgba(56, 189, 248, 0.15);" />
   
   <br><br>
   <p>✨ <strong>Criando experiências digitais completas, modernas e de alta performance</strong> ✨</p>
